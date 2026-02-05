@@ -4,99 +4,156 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>סדנת אשת חיל | מרכז נשמה - הכוונה רוחנית בחכמת הקבלה</title>
-    <meta name="description" content="סדנת אשת חיל - מסע של 18 מפגשים לנשים המבקשות לצאת מהידע אל החוויה, להעמיק בפנימיות התורה, ולבנות חברות נשמה אמיתיות">
+    <meta name="description" content="סדנת אשת חיל - מסע של 18 מפגשים לנשים המבקשות להעמיק בפנימיות התורה, לחוות רוחניות אמיתית ולבנות חברות נשמה. בהנחיית הרב שמואל גיברץ.">
+    
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700&family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&family=Frank+Ruhl+Libre:wght@400;500;700&display=swap" rel="stylesheet">
+    
     <style>
         :root {
+            /* Brand Colors from Canva */
             --teal-dark: #002d40;
             --teal-main: #136391;
             --teal-light: #19a7b7;
             --accent-red: #f04c50;
-            --white: #ffffff;
+            --gold-dark: #c4880f;
+            --gold-main: #e8a41c;
+            --gold-light: #f5c34a;
+            --orange-warm: #f04c50;
             --cream: #faf9f7;
             --cream-dark: #f0ede8;
-            --gold: #d4af37;
-            --text-dark: #1a1a1a;
-            --text-muted: #666666;
+            --text-dark: #002d40;
+            --text-muted: #4a6070;
+            --white: #ffffff;
+            
+            --font-display: 'Frank Ruhl Libre', serif;
+            --font-body: 'Heebo', sans-serif;
+            
+            --shadow-soft: 0 4px 20px rgba(26, 112, 133, 0.1);
+            --shadow-medium: 0 8px 40px rgba(26, 112, 133, 0.15);
+            --shadow-strong: 0 12px 60px rgba(26, 112, 133, 0.2);
+            
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --radius-xl: 40px;
         }
-
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
+        
         html {
             scroll-behavior: smooth;
         }
-
+        
         body {
-            font-family: 'Heebo', sans-serif;
-            line-height: 1.7;
+            font-family: var(--font-body);
+            background: var(--cream);
             color: var(--text-dark);
-            background-color: var(--cream);
+            line-height: 1.7;
+            overflow-x: hidden;
         }
-
+        
+        /* Typography */
         h1, h2, h3, h4 {
-            font-family: 'Frank Ruhl Libre', serif;
+            font-family: var(--font-display);
             font-weight: 700;
+            line-height: 1.3;
         }
-
+        
+        h1 { font-size: clamp(2.2rem, 5vw, 3.5rem); }
+        h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
+        h3 { font-size: clamp(1.4rem, 3vw, 1.8rem); }
+        h4 { font-size: clamp(1.1rem, 2vw, 1.3rem); }
+        
+        p {
+            font-size: clamp(1rem, 1.5vw, 1.15rem);
+            color: var(--text-muted);
+        }
+        
+        /* Layout */
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 24px;
         }
-
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        @media (max-width: 768px) {
+            section { padding: 60px 0; }
+        }
+        
         /* Buttons */
         .btn {
-            display: inline-block;
-            padding: 14px 32px;
-            border-radius: 50px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 16px 40px;
+            font-family: var(--font-body);
+            font-size: 1.1rem;
             font-weight: 600;
-            font-size: 1rem;
             text-decoration: none;
-            transition: all 0.3s ease;
-            cursor: pointer;
             border: none;
+            border-radius: var(--radius-xl);
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
-
+        
         .btn-primary {
-            background: var(--accent-red);
+            background: linear-gradient(135deg, var(--teal-main) 0%, var(--teal-light) 100%);
             color: var(--white);
-            box-shadow: 0 4px 15px rgba(240, 76, 80, 0.3);
+            box-shadow: 0 4px 20px rgba(19, 99, 145, 0.4);
         }
-
+        
         .btn-primary:hover {
-            background: #d93e42;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(240, 76, 80, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(19, 99, 145, 0.5);
+            background: linear-gradient(135deg, var(--teal-light) 0%, var(--teal-main) 100%);
         }
-
-        .btn-secondary {
-            background: transparent;
+        
+        .btn-accent {
+            background: linear-gradient(135deg, var(--accent-red) 0%, #e03a3e 100%);
             color: var(--white);
-            border: 2px solid var(--white);
+            box-shadow: 0 4px 20px rgba(240, 76, 80, 0.4);
         }
-
-        .btn-secondary:hover {
+        
+        .btn-accent:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(240, 76, 80, 0.5);
+        }
+        
+        .btn-secondary {
             background: var(--white);
-            color: var(--teal-dark);
+            color: var(--teal-main);
+            border: 2px solid var(--teal-main);
         }
-
-        /* Hero Section */
+        
+        .btn-secondary:hover {
+            background: var(--teal-main);
+            color: var(--white);
+        }
+        
+        /* ============================================
+           HERO SECTION
+        ============================================ */
         .hero {
-            background: linear-gradient(135deg, var(--teal-dark) 0%, var(--teal-main) 50%, var(--teal-light) 100%);
+            position: relative;
             min-height: 100vh;
             display: flex;
             align-items: center;
-            position: relative;
+            background: linear-gradient(165deg, var(--teal-dark) 0%, var(--teal-main) 50%, var(--teal-light) 100%);
             overflow: hidden;
-            padding: 100px 0 60px;
         }
-
+        
         .hero::before {
             content: '';
             position: absolute;
@@ -104,255 +161,327 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('images/tree-of-life-bg.png') center center;
-            background-size: cover;
-            opacity: 0.15;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(212, 160, 18, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(232, 197, 71, 0.1) 0%, transparent 40%);
+            pointer-events: none;
         }
-
+        
+        /* Decorative rays */
+        .hero-rays {
+            position: absolute;
+            top: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 400px;
+            height: 200px;
+            opacity: 0.3;
+        }
+        
+        .ray {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 8px;
+            height: 100px;
+            background: linear-gradient(to top, var(--gold-main), transparent);
+            border-radius: 4px;
+            transform-origin: bottom center;
+        }
+        
+        .ray:nth-child(1) { transform: translateX(-50%) rotate(-30deg); }
+        .ray:nth-child(2) { transform: translateX(-50%) rotate(-20deg); height: 120px; }
+        .ray:nth-child(3) { transform: translateX(-50%) rotate(-10deg); height: 90px; }
+        .ray:nth-child(4) { transform: translateX(-50%) rotate(0deg); height: 130px; }
+        .ray:nth-child(5) { transform: translateX(-50%) rotate(10deg); height: 90px; }
+        .ray:nth-child(6) { transform: translateX(-50%) rotate(20deg); height: 120px; }
+        .ray:nth-child(7) { transform: translateX(-50%) rotate(30deg); }
+        
         .hero-content {
             position: relative;
             z-index: 2;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .hero-text {
+            text-align: center;
             color: var(--white);
+            padding: 40px 0;
         }
-
-        .hero-logo {
-            max-width: 200px;
-            margin-bottom: 20px;
-        }
-
+        
         .hero-badge {
             display: inline-block;
-            background: rgba(255,255,255,0.15);
-            padding: 8px 20px;
-            border-radius: 30px;
-            font-size: 0.9rem;
-            margin-bottom: 20px;
+            padding: 8px 24px;
+            background: rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(10px);
+            border-radius: var(--radius-xl);
+            font-size: 0.95rem;
+            font-weight: 500;
+            margin-bottom: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
-
-        .hero h1 {
-            font-size: 2.8rem;
-            margin-bottom: 20px;
-            line-height: 1.3;
-        }
-
-        .hero h1 span {
-            color: var(--gold);
-        }
-
-        .hero-subtitle {
-            font-size: 1.2rem;
-            opacity: 0.95;
+        
+        .hero-logo {
+            width: 200px;
+            height: auto;
             margin-bottom: 30px;
+            filter: drop-shadow(0 4px 20px rgba(0,0,0,0.3));
+        }
+        
+        .hero-logo img {
+            width: 100%;
+            height: auto;
+        }
+        
+        .hero h1 {
+            color: var(--white);
+            margin-bottom: 16px;
+            text-shadow: 0 2px 20px rgba(0,0,0,0.2);
+        }
+        
+        .hero h1 span {
+            display: block;
+            font-size: 0.5em;
+            font-weight: 400;
+            opacity: 0.9;
+            margin-top: 8px;
+        }
+        
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 700px;
+            margin: 0 auto 40px;
             line-height: 1.8;
         }
-
-        .hero-buttons {
+        
+        .hero-cta {
             display: flex;
-            gap: 15px;
-            margin-bottom: 40px;
             flex-wrap: wrap;
+            gap: 16px;
+            justify-content: center;
+            margin-bottom: 50px;
         }
-
+        
         .hero-features {
             display: flex;
             flex-wrap: wrap;
-            gap: 20px;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
         }
-
+        
         .hero-feature {
             display: flex;
             align-items: center;
-            gap: 8px;
-            font-size: 0.95rem;
-            opacity: 0.9;
+            gap: 10px;
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.85);
         }
-
-        .hero-feature::before {
-            content: '✦';
-            color: var(--gold);
-        }
-
-        .hero-image {
+        
+        .hero-feature-icon {
+            width: 24px;
+            height: 24px;
+            background: var(--gold-main);
+            border-radius: 50%;
             display: flex;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
+            font-size: 14px;
         }
-
-        .hero-image img {
-            max-width: 100%;
-            border-radius: 20px;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+        
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.85rem;
+            animation: bounce 2s infinite;
         }
-
-        /* Pain Points Section */
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+        
+        /* ============================================
+           PAIN POINTS SECTION
+        ============================================ */
         .pain-points {
-            padding: 100px 0;
-            background: var(--cream);
+            background: var(--white);
+            position: relative;
         }
-
+        
+        .pain-points::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, var(--teal-main), var(--gold-main), var(--orange-warm));
+        }
+        
         .section-header {
             text-align: center;
             margin-bottom: 60px;
         }
-
+        
         .section-header h2 {
-            font-size: 2.4rem;
             color: var(--teal-dark);
-            margin-bottom: 15px;
+            margin-bottom: 16px;
         }
-
+        
         .section-header p {
-            color: var(--text-muted);
-            font-size: 1.1rem;
             max-width: 600px;
             margin: 0 auto;
         }
-
-        .pain-cards {
+        
+        .pain-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
         }
-
+        
         .pain-card {
-            background: var(--white);
-            padding: 35px 30px;
-            border-radius: 16px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            background: var(--cream);
+            padding: 32px;
+            border-radius: var(--radius-lg);
+            border-right: 4px solid var(--gold-main);
             transition: all 0.3s ease;
-            border-right: 4px solid var(--teal-light);
         }
-
+        
         .pain-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            box-shadow: var(--shadow-medium);
         }
-
-        .pain-card h3 {
-            color: var(--teal-main);
-            font-size: 1.2rem;
+        
+        .pain-card h4 {
+            color: var(--teal-dark);
             margin-bottom: 12px;
-            font-family: 'Heebo', sans-serif;
-            font-weight: 600;
         }
-
+        
         .pain-card p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
+            font-size: 1rem;
         }
-
-        /* Journey Section */
+        
+        /* ============================================
+           SOLUTION / JOURNEY SECTION
+        ============================================ */
         .journey {
-            padding: 100px 0;
-            background: var(--white);
+            background: linear-gradient(180deg, var(--cream) 0%, var(--cream-dark) 100%);
         }
-
-        .journey-grid {
+        
+        .journey-wrapper {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 60px;
             align-items: center;
         }
-
-        .journey-text h2 {
-            font-size: 2.2rem;
+        
+        @media (max-width: 900px) {
+            .journey-wrapper { grid-template-columns: 1fr; }
+        }
+        
+        .journey-content h2 {
             color: var(--teal-dark);
-            margin-bottom: 25px;
+            margin-bottom: 24px;
         }
-
-        .journey-text p {
-            color: var(--text-muted);
-            font-size: 1.1rem;
-            margin-bottom: 25px;
+        
+        .journey-content p {
+            margin-bottom: 20px;
         }
-
-        .journey-quote {
-            background: linear-gradient(135deg, var(--teal-dark), var(--teal-main));
-            color: var(--white);
-            padding: 25px 30px;
-            border-radius: 12px;
+        
+        .journey-highlight {
+            background: var(--white);
+            padding: 24px;
+            border-radius: var(--radius-md);
+            border-right: 4px solid var(--teal-main);
+            margin: 30px 0;
+        }
+        
+        .journey-highlight p {
             font-style: italic;
+            color: var(--teal-dark);
+            font-size: 1.1rem;
+            margin: 0;
+        }
+        
+        .journey-visual {
             position: relative;
         }
-
-        .journey-quote::before {
-            content: '"';
-            font-size: 4rem;
-            position: absolute;
-            top: -10px;
-            right: 20px;
-            opacity: 0.2;
-            font-family: Georgia, serif;
-        }
-
-        .journey-stages {
-            background: var(--cream);
+        
+        .journey-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
             padding: 40px;
-            border-radius: 20px;
+            box-shadow: var(--shadow-strong);
+            position: relative;
+            overflow: hidden;
         }
-
-        .journey-stages h3 {
-            color: var(--teal-main);
-            margin-bottom: 30px;
-            text-align: center;
+        
+        .journey-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--teal-main), var(--gold-main));
         }
-
-        .stage {
+        
+        .journey-stage {
             display: flex;
             align-items: flex-start;
             gap: 20px;
-            margin-bottom: 25px;
-            padding-bottom: 25px;
+            margin-bottom: 24px;
+            padding-bottom: 24px;
             border-bottom: 1px solid var(--cream-dark);
         }
-
-        .stage:last-child {
+        
+        .journey-stage:last-child {
             margin-bottom: 0;
             padding-bottom: 0;
             border-bottom: none;
         }
-
-        .stage-number {
+        
+        .journey-stage-num {
             width: 40px;
             height: 40px;
-            background: var(--teal-light);
+            min-width: 40px;
+            background: linear-gradient(135deg, var(--teal-main), var(--teal-light));
             color: var(--white);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 700;
-            flex-shrink: 0;
-        }
-
-        .stage-content h4 {
-            color: var(--teal-dark);
             font-size: 1.1rem;
-            margin-bottom: 5px;
-            font-family: 'Heebo', sans-serif;
         }
-
-        .stage-content p {
-            color: var(--text-muted);
-            font-size: 0.9rem;
+        
+        .journey-stage h4 {
+            color: var(--teal-dark);
+            margin-bottom: 6px;
+            font-size: 1.1rem;
         }
-
-        /* Methodology Section */
+        
+        .journey-stage p {
+            font-size: 0.95rem;
+            margin: 0;
+        }
+        
+        /* ============================================
+           METHODOLOGY SECTION
+        ============================================ */
         .methodology {
-            padding: 100px 0;
             background: var(--teal-dark);
             color: var(--white);
             position: relative;
+            overflow: hidden;
         }
-
+        
         .methodology::before {
             content: '';
             position: absolute;
@@ -360,264 +489,312 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('images/tree-of-life-bg.png') center center;
-            background-size: cover;
-            opacity: 0.1;
+            background: 
+                radial-gradient(circle at 10% 90%, rgba(212, 160, 18, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 90% 10%, rgba(232, 197, 71, 0.08) 0%, transparent 30%);
         }
-
-        .methodology .container {
-            position: relative;
-            z-index: 2;
-        }
-
+        
         .methodology .section-header h2 {
             color: var(--white);
         }
-
+        
         .methodology .section-header p {
-            color: rgba(255,255,255,0.8);
+            color: rgba(255, 255, 255, 0.8);
         }
-
-        .method-cards {
+        
+        .method-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 25px;
+            gap: 30px;
+            position: relative;
+            z-index: 1;
         }
-
+        
         .method-card {
-            background: rgba(255,255,255,0.1);
+            background: rgba(255, 255, 255, 0.08);
             backdrop-filter: blur(10px);
-            padding: 35px 30px;
-            border-radius: 16px;
-            text-align: center;
+            padding: 32px;
+            border-radius: var(--radius-lg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             transition: all 0.3s ease;
-            border: 1px solid rgba(255,255,255,0.1);
         }
-
+        
         .method-card:hover {
-            background: rgba(255,255,255,0.15);
+            background: rgba(255, 255, 255, 0.12);
             transform: translateY(-5px);
         }
-
+        
         .method-icon {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-        }
-
-        .method-card h3 {
-            font-size: 1.2rem;
-            margin-bottom: 12px;
-            color: var(--gold);
-            font-family: 'Heebo', sans-serif;
-            font-weight: 600;
-        }
-
-        .method-card p {
-            opacity: 0.9;
-            font-size: 0.95rem;
-        }
-
-        /* Syllabus Section */
-        .syllabus {
-            padding: 100px 0;
-            background: var(--cream);
-        }
-
-        .timeline {
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            right: 30px;
-            top: 0;
-            bottom: 0;
-            width: 3px;
-            background: linear-gradient(to bottom, var(--teal-light), var(--teal-dark));
-        }
-
-        .timeline-item {
-            display: flex;
-            gap: 30px;
-            margin-bottom: 40px;
-            align-items: flex-start;
-        }
-
-        .timeline-marker {
             width: 60px;
             height: 60px;
-            background: var(--teal-main);
-            color: var(--white);
+            background: linear-gradient(135deg, var(--gold-main), var(--orange-warm));
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+        
+        .method-card h4 {
+            color: var(--gold-light);
+            margin-bottom: 12px;
+        }
+        
+        .method-card p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.95rem;
+        }
+        
+        /* ============================================
+           SYLLABUS SECTION
+        ============================================ */
+        .syllabus {
+            background: var(--white);
+        }
+        
+        .syllabus-timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .syllabus-timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 30px;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--teal-main), var(--gold-main), var(--orange-warm));
+            border-radius: 2px;
+        }
+        
+        @media (max-width: 600px) {
+            .syllabus-timeline::before { right: 20px; }
+        }
+        
+        .syllabus-item {
+            position: relative;
+            padding: 0 80px 50px 0;
+        }
+        
+        @media (max-width: 600px) {
+            .syllabus-item { padding: 0 60px 40px 0; }
+        }
+        
+        .syllabus-item:last-child {
+            padding-bottom: 0;
+        }
+        
+        .syllabus-marker {
+            position: absolute;
+            right: 10px;
+            top: 0;
+            width: 44px;
+            height: 44px;
+            background: var(--white);
+            border: 4px solid var(--teal-main);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 700;
-            font-size: 1.3rem;
-            flex-shrink: 0;
-            z-index: 2;
-            box-shadow: 0 5px 20px rgba(19, 99, 145, 0.3);
-        }
-
-        .timeline-content {
-            background: var(--white);
-            padding: 25px 30px;
-            border-radius: 12px;
-            flex: 1;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-        }
-
-        .timeline-content h3 {
-            color: var(--teal-dark);
-            font-size: 1.1rem;
-            margin-bottom: 8px;
-            font-family: 'Heebo', sans-serif;
-            font-weight: 600;
-        }
-
-        .timeline-content .lessons {
-            color: var(--teal-light);
+            color: var(--teal-main);
             font-size: 0.9rem;
+            z-index: 1;
+        }
+        
+        @media (max-width: 600px) {
+            .syllabus-marker {
+                right: 0;
+                width: 40px;
+                height: 40px;
+            }
+        }
+        
+        .syllabus-content {
+            background: var(--cream);
+            padding: 28px;
+            border-radius: var(--radius-lg);
+            transition: all 0.3s ease;
+        }
+        
+        .syllabus-content:hover {
+            box-shadow: var(--shadow-medium);
+            transform: translateX(-5px);
+        }
+        
+        .syllabus-lessons {
+            display: inline-block;
+            background: var(--teal-main);
+            color: var(--white);
+            padding: 4px 14px;
+            border-radius: var(--radius-sm);
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+        
+        .syllabus-content h4 {
+            color: var(--teal-dark);
             margin-bottom: 10px;
         }
-
-        .timeline-content p {
-            color: var(--text-muted);
+        
+        .syllabus-content p {
             font-size: 0.95rem;
+            margin: 0;
         }
-
-        /* Audience Section */
+        
+        /* ============================================
+           TARGET AUDIENCE SECTION
+        ============================================ */
         .audience {
-            padding: 100px 0;
-            background: var(--white);
+            background: var(--cream);
         }
-
+        
         .audience-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 30px;
+            gap: 40px;
         }
-
+        
+        @media (max-width: 768px) {
+            .audience-grid { grid-template-columns: 1fr; }
+        }
+        
         .audience-card {
+            background: var(--white);
             padding: 40px;
-            border-radius: 20px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-soft);
         }
-
+        
         .audience-card.for-you {
-            background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
-            border: 2px solid #81c784;
+            border-top: 5px solid var(--teal-main);
         }
-
+        
         .audience-card.not-for-you {
-            background: linear-gradient(135deg, #fce4ec, #f8bbd9);
-            border: 2px solid #f48fb1;
+            border-top: 5px solid var(--text-muted);
         }
-
+        
         .audience-card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 25px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            margin-bottom: 24px;
         }
-
+        
         .audience-card.for-you h3 {
-            color: #2e7d32;
+            color: var(--teal-dark);
         }
-
+        
         .audience-card.not-for-you h3 {
-            color: #c2185b;
-        }
-
-        .audience-card ul {
-            list-style: none;
-        }
-
-        .audience-card li {
-            padding: 10px 0;
-            padding-right: 30px;
-            position: relative;
-            color: var(--text-dark);
-        }
-
-        .audience-card.for-you li::before {
-            content: '✓';
-            position: absolute;
-            right: 0;
-            color: #2e7d32;
-            font-weight: 700;
-        }
-
-        .audience-card.not-for-you li::before {
-            content: '✕';
-            position: absolute;
-            right: 0;
-            color: #c2185b;
-            font-weight: 700;
-        }
-
-        .audience-note {
-            text-align: center;
-            margin-top: 40px;
-            padding: 20px;
-            background: var(--cream);
-            border-radius: 12px;
             color: var(--text-muted);
         }
-
-        /* Testimonials Section */
-        .testimonials {
-            padding: 100px 0;
-            background: var(--cream);
+        
+        .audience-list {
+            list-style: none;
         }
-
-        .testimonial-cards {
+        
+        .audience-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            margin-bottom: 16px;
+            font-size: 1rem;
+            color: var(--text-dark);
+        }
+        
+        .audience-list li::before {
+            content: '';
+            width: 24px;
+            height: 24px;
+            min-width: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 2px;
+        }
+        
+        .for-you .audience-list li::before {
+            content: '✓';
+            background: var(--teal-main);
+            color: var(--white);
+            font-size: 14px;
+            font-weight: bold;
+        }
+        
+        .not-for-you .audience-list li::before {
+            content: '✕';
+            background: var(--text-muted);
+            color: var(--white);
+            font-size: 12px;
+        }
+        
+        /* ============================================
+           TESTIMONIALS SECTION
+        ============================================ */
+        .testimonials {
+            background: linear-gradient(180deg, var(--cream-dark) 0%, var(--white) 100%);
+        }
+        
+        .testimonials-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
             gap: 30px;
         }
-
+        
+        @media (max-width: 400px) {
+            .testimonials-grid { grid-template-columns: 1fr; }
+        }
+        
         .testimonial-card {
             background: var(--white);
-            padding: 35px;
-            border-radius: 20px;
-            box-shadow: 0 5px 25px rgba(0,0,0,0.05);
+            padding: 36px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-soft);
             position: relative;
+            transition: all 0.3s ease;
         }
-
-        .testimonial-card::before {
-            content: '"';
-            font-size: 5rem;
-            color: var(--teal-light);
-            opacity: 0.2;
+        
+        .testimonial-card:hover {
+            box-shadow: var(--shadow-medium);
+            transform: translateY(-5px);
+        }
+        
+        .testimonial-quote {
+            font-size: 3rem;
+            color: var(--gold-main);
+            opacity: 0.3;
             position: absolute;
-            top: 10px;
-            right: 25px;
-            font-family: Georgia, serif;
+            top: 20px;
+            left: 20px;
+            font-family: serif;
+            line-height: 1;
         }
-
+        
+        .testimonial-content {
+            position: relative;
+            z-index: 1;
+        }
+        
         .testimonial-text {
             font-size: 1rem;
             color: var(--text-dark);
-            margin-bottom: 25px;
             line-height: 1.8;
-            position: relative;
-            z-index: 2;
+            margin-bottom: 24px;
+            font-style: italic;
         }
-
+        
         .testimonial-author {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 14px;
         }
-
+        
         .testimonial-avatar {
             width: 50px;
             height: 50px;
-            background: var(--teal-light);
+            background: linear-gradient(135deg, var(--teal-main), var(--teal-light));
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -626,240 +803,289 @@
             font-weight: 700;
             font-size: 1.2rem;
         }
-
-        .testimonial-author h4 {
+        
+        .testimonial-info h5 {
             color: var(--teal-dark);
-            font-family: 'Heebo', sans-serif;
-            font-weight: 600;
+            font-size: 1.05rem;
+            margin-bottom: 2px;
         }
-
-        .testimonial-author span {
+        
+        .testimonial-info span {
             color: var(--text-muted);
             font-size: 0.9rem;
         }
-
-        /* Team Section */
+        
+        .testimonial-stars {
+            color: var(--gold-main);
+            font-size: 1rem;
+            margin-top: 4px;
+        }
+        
+        /* ============================================
+           TEAM SECTION
+        ============================================ */
         .team {
-            padding: 100px 0;
             background: var(--white);
         }
-
-        .team-content {
+        
+        .team-wrapper {
             display: grid;
-            grid-template-columns: 350px 1fr;
-            gap: 60px;
+            grid-template-columns: 1fr 2fr;
+            gap: 50px;
             align-items: center;
         }
-
-        .team-image img {
-            width: 100%;
-            border-radius: 20px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+        
+        @media (max-width: 900px) {
+            .team-wrapper { 
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
         }
-
-        .team-text h2 {
-            font-size: 2rem;
+        
+        .team-image {
+            position: relative;
+        }
+        
+        .team-photo {
+            width: 100%;
+            max-width: 320px;
+            aspect-ratio: 3/4;
+            background: linear-gradient(135deg, var(--teal-main), var(--teal-light));
+            border-radius: var(--radius-xl);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 5rem;
+            margin: 0 auto;
+            box-shadow: var(--shadow-strong);
+            overflow: hidden;
+        }
+        
+        .team-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+        }
+        
+        .team-content h2 {
             color: var(--teal-dark);
             margin-bottom: 20px;
         }
-
-        .team-text p {
-            color: var(--text-muted);
-            font-size: 1.05rem;
-            margin-bottom: 25px;
-            line-height: 1.8;
+        
+        .team-content p {
+            margin-bottom: 16px;
         }
-
-        .team-tags {
+        
+        .team-credentials {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 30px;
+            gap: 12px;
+            margin-top: 24px;
         }
-
-        .team-tag {
+        
+        @media (max-width: 900px) {
+            .team-credentials { justify-content: center; }
+        }
+        
+        .credential {
             background: var(--cream);
-            color: var(--teal-main);
-            padding: 8px 16px;
-            border-radius: 20px;
+            padding: 8px 18px;
+            border-radius: var(--radius-xl);
             font-size: 0.9rem;
+            color: var(--teal-dark);
+            font-weight: 500;
         }
-
-        .team-note {
-            background: var(--cream);
-            padding: 20px;
-            border-radius: 12px;
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            border-right: 3px solid var(--teal-light);
-        }
-
-        /* Logistics Section */
+        
+        /* ============================================
+           LOGISTICS SECTION
+        ============================================ */
         .logistics {
-            padding: 100px 0;
-            background: linear-gradient(135deg, var(--teal-dark), var(--teal-main));
+            background: var(--teal-dark);
             color: var(--white);
         }
-
+        
         .logistics .section-header h2 {
             color: var(--white);
         }
-
+        
+        .logistics .section-header p {
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
         .logistics-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 25px;
-            margin-bottom: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
         }
-
+        
         .logistics-item {
             text-align: center;
-            padding: 30px 20px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 16px;
-            backdrop-filter: blur(10px);
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: var(--radius-lg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
-
+        
         .logistics-icon {
             font-size: 2.5rem;
-            margin-bottom: 15px;
+            margin-bottom: 16px;
         }
-
+        
         .logistics-item h4 {
-            font-size: 1.1rem;
+            color: var(--gold-light);
             margin-bottom: 8px;
-            font-family: 'Heebo', sans-serif;
+            font-size: 1.1rem;
         }
-
+        
         .logistics-item p {
-            opacity: 0.85;
-            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 1rem;
+            margin: 0;
         }
-
+        
         .logistics-note {
+            background: rgba(212, 160, 18, 0.15);
+            border: 1px solid rgba(212, 160, 18, 0.3);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            margin-top: 40px;
             text-align: center;
-            max-width: 700px;
-            margin: 0 auto;
-            padding: 25px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 12px;
-            font-size: 0.95rem;
-            line-height: 1.8;
         }
-
-        /* Registration Form */
+        
+        .logistics-note p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1rem;
+            margin: 0;
+        }
+        
+        /* ============================================
+           REGISTRATION SECTION
+        ============================================ */
         .registration {
-            padding: 100px 0;
-            background: var(--cream);
+            background: linear-gradient(180deg, var(--cream) 0%, var(--white) 100%);
         }
-
-        .form-container {
+        
+        .registration-wrapper {
             max-width: 700px;
             margin: 0 auto;
+        }
+        
+        .registration-form {
             background: var(--white);
             padding: 50px;
-            border-radius: 24px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-strong);
         }
-
+        
+        @media (max-width: 600px) {
+            .registration-form { padding: 30px 24px; }
+        }
+        
         .form-group {
-            margin-bottom: 25px;
+            margin-bottom: 24px;
         }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-
+        
         .form-group label {
             display: block;
             margin-bottom: 8px;
             font-weight: 500;
-            color: var(--text-dark);
+            color: var(--teal-dark);
         }
-
-        .form-group label span {
-            color: var(--accent-red);
-        }
-
+        
         .form-group input,
         .form-group select,
         .form-group textarea {
             width: 100%;
             padding: 14px 18px;
             border: 2px solid var(--cream-dark);
-            border-radius: 10px;
+            border-radius: var(--radius-md);
+            font-family: var(--font-body);
             font-size: 1rem;
-            font-family: 'Heebo', sans-serif;
             transition: all 0.3s ease;
+            background: var(--cream);
         }
-
+        
         .form-group input:focus,
         .form-group select:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color: var(--teal-light);
-            box-shadow: 0 0 0 3px rgba(25, 167, 183, 0.1);
+            border-color: var(--teal-main);
+            background: var(--white);
         }
-
+        
         .form-group textarea {
             min-height: 120px;
             resize: vertical;
         }
-
-        .checkbox-group {
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        @media (max-width: 500px) {
+            .form-row { grid-template-columns: 1fr; }
+        }
+        
+        .form-checkbox {
             display: flex;
             align-items: flex-start;
             gap: 12px;
         }
-
-        .checkbox-group input {
+        
+        .form-checkbox input {
             width: auto;
-            margin-top: 5px;
+            margin-top: 4px;
         }
-
-        .checkbox-group label {
-            margin-bottom: 0;
+        
+        .form-checkbox label {
+            margin: 0;
             font-weight: 400;
-            color: var(--text-muted);
             font-size: 0.95rem;
+            color: var(--text-muted);
         }
-
+        
         .form-submit {
             text-align: center;
             margin-top: 30px;
         }
-
+        
         .form-submit .btn {
-            font-size: 1.1rem;
-            padding: 16px 50px;
+            width: 100%;
+            max-width: 300px;
+            padding: 18px 40px;
         }
-
-        /* FAQ Section */
+        
+        /* ============================================
+           FAQ SECTION
+        ============================================ */
         .faq {
-            padding: 100px 0;
-            background: var(--white);
+            background: var(--cream);
         }
-
+        
         .faq-list {
             max-width: 800px;
             margin: 0 auto;
         }
-
+        
         .faq-item {
-            margin-bottom: 15px;
-            border: 1px solid var(--cream-dark);
-            border-radius: 12px;
+            background: var(--white);
+            border-radius: var(--radius-md);
+            margin-bottom: 16px;
             overflow: hidden;
+            box-shadow: var(--shadow-soft);
         }
-
+        
         .faq-question {
             width: 100%;
-            padding: 20px 25px;
-            background: var(--cream);
+            padding: 20px 24px;
+            background: none;
             border: none;
             text-align: right;
+            font-family: var(--font-body);
             font-size: 1.05rem;
             font-weight: 600;
             color: var(--teal-dark);
@@ -867,154 +1093,172 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-family: 'Heebo', sans-serif;
+            gap: 16px;
             transition: all 0.3s ease;
         }
-
+        
         .faq-question:hover {
-            background: var(--cream-dark);
+            background: var(--cream);
         }
-
-        .faq-question::after {
-            content: '+';
+        
+        .faq-icon {
             font-size: 1.5rem;
-            color: var(--teal-light);
+            color: var(--teal-main);
             transition: transform 0.3s ease;
         }
-
-        .faq-item.active .faq-question::after {
+        
+        .faq-item.active .faq-icon {
             transform: rotate(45deg);
         }
-
+        
         .faq-answer {
-            padding: 0 25px;
             max-height: 0;
             overflow: hidden;
-            transition: all 0.3s ease;
-            background: var(--white);
+            transition: max-height 0.4s ease;
         }
-
+        
         .faq-item.active .faq-answer {
-            padding: 25px;
             max-height: 500px;
         }
-
-        .faq-answer p {
+        
+        .faq-answer-content {
+            padding: 0 24px 24px;
             color: var(--text-muted);
             line-height: 1.8;
         }
-
-        /* CTA Section */
+        
+        /* ============================================
+           CTA SECTION
+        ============================================ */
         .cta {
-            padding: 100px 0;
-            background: linear-gradient(135deg, var(--teal-dark), var(--teal-main), var(--teal-light));
-            text-align: center;
+            background: linear-gradient(135deg, var(--teal-dark) 0%, var(--teal-main) 100%);
             color: var(--white);
-            position: relative;
-            overflow: hidden;
+            text-align: center;
+            padding: 80px 0;
         }
-
-        .cta::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('images/women-temple.png') center center;
-            background-size: cover;
-            opacity: 0.15;
-        }
-
-        .cta .container {
-            position: relative;
-            z-index: 2;
-        }
-
+        
         .cta h2 {
-            font-size: 2.5rem;
+            color: var(--white);
             margin-bottom: 20px;
         }
-
+        
         .cta p {
-            font-size: 1.2rem;
-            opacity: 0.95;
+            color: rgba(255, 255, 255, 0.9);
             max-width: 600px;
-            margin: 0 auto 35px;
+            margin: 0 auto 30px;
+            font-size: 1.15rem;
         }
-
-        /* Footer */
+        
+        /* ============================================
+           FOOTER
+        ============================================ */
         .footer {
-            background: var(--teal-dark);
-            color: var(--white);
-            padding: 60px 0 30px;
+            background: #0a2a30;
+            color: rgba(255, 255, 255, 0.7);
+            padding: 50px 0 30px;
         }
-
+        
         .footer-content {
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-columns: 2fr 1fr 1fr;
             gap: 40px;
             margin-bottom: 40px;
         }
-
-        .footer-brand img {
-            max-width: 150px;
-            margin-bottom: 15px;
+        
+        @media (max-width: 768px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
         }
-
-        .footer-brand p {
-            opacity: 0.8;
+        
+        .footer-logo {
+            width: 140px;
+            margin-bottom: 16px;
+        }
+        
+        @media (max-width: 768px) {
+            .footer-logo { margin: 0 auto 16px; }
+        }
+        
+        .footer-about p {
             font-size: 0.95rem;
+            line-height: 1.7;
         }
-
-        .footer-links h4,
-        .footer-contact h4 {
-            color: var(--gold);
+        
+        .footer h4 {
+            color: var(--white);
             margin-bottom: 20px;
-            font-family: 'Heebo', sans-serif;
-            font-weight: 600;
+            font-size: 1.1rem;
         }
-
-        .footer-links ul {
+        
+        .footer-links {
             list-style: none;
         }
-
+        
         .footer-links li {
             margin-bottom: 10px;
         }
-
+        
         .footer-links a {
-            color: var(--white);
-            opacity: 0.8;
+            color: rgba(255, 255, 255, 0.7);
             text-decoration: none;
-            transition: opacity 0.3s ease;
+            transition: color 0.3s ease;
         }
-
+        
         .footer-links a:hover {
-            opacity: 1;
+            color: var(--gold-main);
         }
-
+        
         .footer-contact p {
             display: flex;
             align-items: center;
             gap: 10px;
             margin-bottom: 12px;
-            opacity: 0.9;
+            font-size: 0.95rem;
         }
-
+        
+        @media (max-width: 768px) {
+            .footer-contact p { justify-content: center; }
+        }
+        
         .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 24px;
             text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            opacity: 0.7;
             font-size: 0.9rem;
         }
-
-        /* WhatsApp Button */
+        
+        /* ============================================
+           ANIMATIONS
+        ============================================ */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* WhatsApp Float Button */
         .whatsapp-float {
             position: fixed;
-            bottom: 30px;
-            left: 30px;
+            bottom: 24px;
+            left: 24px;
             width: 60px;
             height: 60px;
             background: #25d366;
@@ -1022,392 +1266,364 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
+            color: white;
+            font-size: 2rem;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
             z-index: 1000;
             transition: all 0.3s ease;
             text-decoration: none;
         }
-
+        
         .whatsapp-float:hover {
             transform: scale(1.1);
-            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5);
-        }
-
-        .whatsapp-float svg {
-            width: 32px;
-            height: 32px;
-            fill: white;
-        }
-
-        /* Animations */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Responsive */
-        @media (max-width: 992px) {
-            .hero-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .hero-image {
-                order: -1;
-            }
-
-            .hero-image img {
-                max-width: 400px;
-            }
-
-            .hero-buttons {
-                justify-content: center;
-            }
-
-            .hero-features {
-                justify-content: center;
-            }
-
-            .journey-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .team-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .team-image {
-                max-width: 350px;
-                margin: 0 auto;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .section-header h2 {
-                font-size: 1.8rem;
-            }
-
-            .audience-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-
-            .form-container {
-                padding: 30px 20px;
-            }
-
-            .timeline::before {
-                right: 20px;
-            }
-
-            .timeline-marker {
-                width: 45px;
-                height: 45px;
-                font-size: 1rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero {
-                padding: 80px 0 40px;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-            }
-
-            .btn {
-                width: 100%;
-                text-align: center;
-            }
-
-            .testimonial-cards {
-                grid-template-columns: 1fr;
-            }
-
-            .whatsapp-float {
-                bottom: 20px;
-                left: 20px;
-                width: 55px;
-                height: 55px;
-            }
+            box-shadow: 0 6px 30px rgba(37, 211, 102, 0.5);
         }
     </style>
 </head>
 <body>
-    <!-- Hero Section -->
-    <section class="hero" id="top">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <img src="images/logo.png" alt="מרכז נשמה" class="hero-logo" onerror="this.style.display='none'">
-                    <span class="hero-badge">מרכז נשמה • הכוונה רוחנית בחכמת הקבלה</span>
-                    <h1>סדנת <span>"אשת חיל"</span><br>התנוצצות הנקודה שבלב</h1>
-                    <p class="hero-subtitle">מסע של 18 מפגשים לנשים המבקשות לצאת מהידע אל החוויה, להעמיק בפנימיות התורה, ולבנות חברות נשמה אמיתיות – מחוברות לשמיים ומעוגנות בקרקע.</p>
-                    <div class="hero-buttons">
-                        <a href="#registration" class="btn btn-primary">להרשמה לסדנה</a>
-                        <a href="#syllabus" class="btn btn-secondary">לתוכנית המלאה</a>
-                    </div>
-                    <div class="hero-features">
-                        <span class="hero-feature">18 מפגשים</span>
-                        <span class="hero-feature">ליווי אישי</span>
-                        <span class="hero-feature">קבוצה קטנה ואינטימית</span>
-                        <span class="hero-feature">שיטת בעל הסולם והרב"ש</span>
-                    </div>
+    <!-- HERO SECTION -->
+    <section class="hero" id="hero">
+        <div class="hero-rays">
+            <div class="ray"></div>
+            <div class="ray"></div>
+            <div class="ray"></div>
+            <div class="ray"></div>
+            <div class="ray"></div>
+            <div class="ray"></div>
+            <div class="ray"></div>
+        </div>
+        <div class="container hero-content">
+            <div class="hero-logo">
+                <!-- Replace with your logo path when deploying -->
+                <img src="images/logo.png" alt="מרכז נשמה - הכוונה רוחנית בחכמת הקבלה" onerror="this.style.display='none'">
+            </div>
+            
+            <span class="hero-badge">מרכז נשמה • הכוונה רוחנית בחכמת הקבלה</span>
+            
+            <h1>
+                סדנת "אשת חיל"
+                <span>התנוצצות הנקודה שבלב</span>
+            </h1>
+            
+            <p class="hero-subtitle">
+                מסע של 18 מפגשים לנשים המבקשות לצאת מהידע אל החוויה, 
+                להעמיק בפנימיות התורה, ולבנות חברות נשמה אמיתיות – 
+                מחוברות לשמיים ומעוגנות בקרקע.
+            </p>
+            
+            <div class="hero-cta">
+                <a href="#registration" class="btn btn-accent">להרשמה לסדנה →</a>
+                <a href="#syllabus" class="btn btn-secondary">לתוכנית המלאה</a>
+            </div>
+            
+            <div class="hero-features">
+                <div class="hero-feature">
+                    <span class="hero-feature-icon">✓</span>
+                    <span>18 מפגשים</span>
                 </div>
-                <div class="hero-image">
-                    <img src="images/hero-heart.png" alt="התנוצצות הנקודה שבלב" onerror="this.style.display='none'">
+                <div class="hero-feature">
+                    <span class="hero-feature-icon">✓</span>
+                    <span>ליווי אישי</span>
+                </div>
+                <div class="hero-feature">
+                    <span class="hero-feature-icon">✓</span>
+                    <span>קבוצה קטנה ואינטימית</span>
+                </div>
+                <div class="hero-feature">
+                    <span class="hero-feature-icon">✓</span>
+                    <span>שיטת בעל הסולם והרב"ש</span>
                 </div>
             </div>
         </div>
+        
+        <div class="scroll-indicator">
+            <span>גללי למטה</span>
+            <span>↓</span>
+        </div>
     </section>
 
-    <!-- Pain Points Section -->
-    <section class="pain-points" id="about">
+    <!-- PAIN POINTS SECTION -->
+    <section class="pain-points" id="pain-points">
         <div class="container">
-            <div class="section-header fade-in">
+            <div class="section-header">
                 <h2>האם גם את מרגישה ככה?</h2>
-                <p>הרבה נשים מגיעות אלינו עם תחושות דומות...</p>
+                <p>הרבה נשים שמגיעות אלינו מספרות על תחושות דומות...</p>
             </div>
-            <div class="pain-cards">
-                <div class="pain-card fade-in">
-                    <h3>"למדתי הרבה, אבל משהו חסר"</h3>
-                    <p>הידע נשאר בראש ולא יורד ללב. את מרגישה שיש פער בין מה שאת יודעת לבין מה שאת חווה.</p>
+            
+            <div class="pain-grid">
+                <div class="pain-card animate-on-scroll">
+                    <h4>למדתי הרבה, אבל משהו חסר</h4>
+                    <p>את קוראת ספרים, מאזינה לשיעורים, אבל הידע נשאר "בראש" ולא מצליח לרדת ללב. את מרגישה שיש עוד שכבה עמוקה יותר שאת לא מצליחה לגעת בה.</p>
                 </div>
-                <div class="pain-card fade-in">
-                    <h3>"חסרה לי חבורה אמיתית"</h3>
-                    <p>את מחפשת חברות נשמה, לא קשרים שטחיים. את רוצה מקום שבו אפשר לדבר באמת, בלי מסכות.</p>
+                
+                <div class="pain-card animate-on-scroll">
+                    <h4>חסרה לי חבורה אמיתית</h4>
+                    <p>את לומדת לבד או בקבוצות שבהן הקשר שטחי. את מחפשת נשים שמבינות את השפה, שאפשר לשתף איתן ברמה עמוקה יותר – לא רק "חברות", אלא חברות נשמה.</p>
                 </div>
-                <div class="pain-card fade-in">
-                    <h3>"אני רוצה לחוות, לא רק לדעת"</h3>
-                    <p>איך המושגים מתורגמים לחיים? איך "בינה" ו"מלכות" הופכים לדבר מוחשי ביומיום?</p>
+                
+                <div class="pain-card animate-on-scroll">
+                    <h4>אני רוצה לחוות, לא רק לדעת</h4>
+                    <p>המושגים יפים על הנייר, אבל איך זה מתורגם לחיים שלך? איך "אהבת הזולת" או "צמצום" הופכים למשהו שאת חיה ולא רק מדברת עליו?</p>
                 </div>
-                <div class="pain-card fade-in">
-                    <h3>"המציאות מבלבלת אותי"</h3>
-                    <p>את מחפשת עוגן, סדר וחזון. משהו שייתן מסגרת להבנת העולם ותפקידך בו.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Journey Section -->
-    <section class="journey">
-        <div class="container">
-            <div class="journey-grid">
-                <div class="journey-text fade-in">
-                    <h2>המסע מ'אני פרטי' אל 'אני כללי'</h2>
-                    <p>סדנת אשת חיל היא לא עוד קורס ללימוד קבלה. זוהי מעבדה רוחנית חיה שבה את עוברת מהפך תודעתי אמיתי.</p>
-                    <p>דרך העבודה בקבוצה, את לומדת לראות את העולם אחרת – להבין שכל מה שמחוצה אליך הוא בעצם השתקפות של הפנים שלך.</p>
-                    <div class="journey-quote">
-                        "העולם הזה שמחוצה אליי – הוא בעצם הנשמה שלי. השינוי הוא תמיד מתוכי החוצה."
-                    </div>
-                </div>
-                <div class="journey-stages fade-in">
-                    <h3>4 שלבי ההתפתחות בקבוצה</h3>
-                    <div class="stage">
-                        <div class="stage-number">1</div>
-                        <div class="stage-content">
-                            <h4>"אני הולכת לקבוצה"</h4>
-                            <p>השתתפות ראשונית – את באה ללמוד ולהקשיב</p>
-                        </div>
-                    </div>
-                    <div class="stage">
-                        <div class="stage-number">2</div>
-                        <div class="stage-content">
-                            <h4>"אני חלק מהקבוצה"</h4>
-                            <p>תחושת זהות קבוצתית מתחילה להתעורר</p>
-                        </div>
-                    </div>
-                    <div class="stage">
-                        <div class="stage-number">3</div>
-                        <div class="stage-content">
-                            <h4>"אני לא יכולה בלעדיהן"</h4>
-                            <p>הקשר הופך לחיוני – את מרגישה חסרון כשהן לא שם</p>
-                        </div>
-                    </div>
-                    <div class="stage">
-                        <div class="stage-number">4</div>
-                        <div class="stage-content">
-                            <h4>"אני מרגישה אתכן"</h4>
-                            <p>הרגשת הזולת ברמה פנימית – האני הפרטי מתרחב</p>
-                        </div>
-                    </div>
+                
+                <div class="pain-card animate-on-scroll">
+                    <h4>המציאות מבלבלת אותי</h4>
+                    <p>בתוך כל מה שקורה סביב – בארץ, בעולם, במשפחה – את מחפשת עוגן. סדר פנימי, חזון, ותוכנית לחיים שתיתן לך כלים להתמודד עם הכאוס.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Methodology Section -->
-    <section class="methodology">
+    <!-- JOURNEY / SOLUTION SECTION -->
+    <section class="journey" id="journey">
         <div class="container">
-            <div class="section-header fade-in">
+            <div class="journey-wrapper">
+                <div class="journey-content">
+                    <h2>המסע מ"אני פרטי" אל "אני כללי"</h2>
+                    
+                    <p>
+                        סדנת "אשת חיל" היא לא עוד קורס ללימוד קבלה. זוהי מעבדה רוחנית חיה שבה את עוברת מהפך תודעתי אמיתי – מתחושת נפרדות והסתרה, אל הרגשת אחדות וחיבור.
+                    </p>
+                    
+                    <div class="journey-highlight">
+                        <p>"העולם הזה שמחוצה אליי – הוא בעצם הנשמה שלי. השינוי הוא תמיד מתוכי החוצה."</p>
+                    </div>
+                    
+                    <p>
+                        בשיטת בעל הסולם והרב"ש, אנחנו לומדות שהקבוצה היא הכלי המרכזי לתיקון. לא לימוד אינטלקטואלי מנותק – אלא עבודה חיה שבה כל מושג הופך לחוויה, וכל חוויה מעמיקה את ההבנה.
+                    </p>
+                    
+                    <a href="#registration" class="btn btn-primary" style="margin-top: 20px;">אני רוצה להתחיל את המסע</a>
+                </div>
+                
+                <div class="journey-visual">
+                    <div class="journey-card">
+                        <h4 style="color: var(--teal-dark); margin-bottom: 24px; text-align: center;">ארבעת שלבי ההתפתחות בקבוצה</h4>
+                        
+                        <div class="journey-stage">
+                            <span class="journey-stage-num">1</span>
+                            <div>
+                                <h4>"אני הולכת לקבוצה"</h4>
+                                <p>השתתפות ראשונית, הקבוצה עדיין "בחוץ"</p>
+                            </div>
+                        </div>
+                        
+                        <div class="journey-stage">
+                            <span class="journey-stage-num">2</span>
+                            <div>
+                                <h4>"אני חלק מהקבוצה"</h4>
+                                <p>תחושת זהות קבוצתית – "אני לא לבד בעולם"</p>
+                            </div>
+                        </div>
+                        
+                        <div class="journey-stage">
+                            <span class="journey-stage-num">3</span>
+                            <div>
+                                <h4>"אני לא יכולה בלעדיהן"</h4>
+                                <p>הקשר הופך לחיוני, מרגישה את תנודות הנפש של החברות</p>
+                            </div>
+                        </div>
+                        
+                        <div class="journey-stage">
+                            <span class="journey-stage-num">4</span>
+                            <div>
+                                <h4>"אני מרגישה אתכן"</h4>
+                                <p>הרגשת הזולת ברמה פנימית ועמוקה – ללא מילים</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- METHODOLOGY SECTION -->
+    <section class="methodology" id="methodology">
+        <div class="container">
+            <div class="section-header">
                 <h2>המתודולוגיה הייחודית שלנו</h2>
-                <p>שילוב ייחודי של לימוד עיוני ועבודה חוויתית</p>
+                <p>שילוב מדויק בין לימוד עיוני לעבודה חווייתית-חברתית</p>
             </div>
-            <div class="method-cards">
-                <div class="method-card fade-in">
+            
+            <div class="method-grid">
+                <div class="method-card animate-on-scroll">
                     <div class="method-icon">🌱</div>
-                    <h3>שיטת "ענף ושורש"</h3>
-                    <p>חיבור בין מושגים קבליים לחוויות יומיומיות. כל מושג מופשט מקבל ביטוי מעשי בחייך.</p>
+                    <h4>שיטת "ענף ושורש"</h4>
+                    <p>מחברים בין המושגים הקבליים (השורשים) לחוויות היומיומיות שלך (הענפים). לא לימוד תיאורטי – אלא "ללמוד על מה שאת חווה".</p>
                 </div>
-                <div class="method-card fade-in">
+                
+                <div class="method-card animate-on-scroll">
                     <div class="method-icon">👭</div>
-                    <h3>הקבוצה ככלי מרכזי</h3>
-                    <p>הקבוצה היא הכלי העיקרי לתיקון. דרך היחסים עם החברות את לומדת על עצמך.</p>
+                    <h4>הקבוצה ככלי מרכזי</h4>
+                    <p>הקבוצה אינה רק תמיכה – היא הכלי העיקרי לתיקון. דרך העבודה החברתית אנו לומדות להרגיש את הזולת ובכך לגלות את עצמנו.</p>
                 </div>
-                <div class="method-card fade-in">
+                
+                <div class="method-card animate-on-scroll">
                     <div class="method-icon">✨</div>
-                    <h3>רכישת כלים פנימיים</h3>
-                    <p>אנחנו לא מלמדים משהו חדש – אנחנו מעוררים את מה שכבר קיים בך.</p>
+                    <h4>רכישת כלים פנימיים</h4>
+                    <p>לא ידע חיצוני לשינון. המטרה היא "לעורר את הכלים שכבר קיימים בך" – להסיר הסתרות ולגלות את ה"אני האמיתי".</p>
                 </div>
-                <div class="method-card fade-in">
+                
+                <div class="method-card animate-on-scroll">
                     <div class="method-icon">🔄</div>
-                    <h3>לימוד = חוויה</h3>
-                    <p>אצלנו התיאוריה והחוויה הם דבר אחד. כל מושג נלמד ונחווה במקביל.</p>
+                    <h4>לימוד = חוויה</h4>
+                    <p>בסדנה שלנו, הלימוד והחוויה אינם נפרדים. התיאוריה מאירה את החוויה, והחוויה מחייה את התיאוריה.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Syllabus Section -->
+    <!-- SYLLABUS SECTION -->
     <section class="syllabus" id="syllabus">
         <div class="container">
-            <div class="section-header fade-in">
+            <div class="section-header">
                 <h2>מסע הסדנה: 18 מפגשים ב-5 שלבים</h2>
-                <p>כל שלב בונה על קודמו ומכין אותך לשלב הבא</p>
+                <p>כל שלב מכין את הקרקע לבא אחריו – מהבירורים הראשוניים עד להבנות העמוקות ביותר</p>
             </div>
-            <div class="timeline">
-                <div class="timeline-item fade-in">
-                    <div class="timeline-marker">א</div>
-                    <div class="timeline-content">
-                        <span class="lessons">שיעורים 1-3</span>
-                        <h3>"הסרת חלודה" – יצירת כלי קיבול</h3>
-                        <p>פתיחת הלב, הכרות עם הקבוצה, והכנת הקרקע לעבודה הפנימית.</p>
+            
+            <div class="syllabus-timeline">
+                <div class="syllabus-item animate-on-scroll">
+                    <div class="syllabus-marker">א</div>
+                    <div class="syllabus-content">
+                        <span class="syllabus-lessons">שיעורים 1-3</span>
+                        <h4>"הסרת חלודה" – יצירת כלי קיבול</h4>
+                        <p>בירור תפיסות קודמות, מענה על שאלות, והיכרות מעמיקה עם המתודולוגיה והדינמיקה הקבוצתית. הכנת ה"כלי" לקליטת התוכן העמוק.</p>
                     </div>
                 </div>
-                <div class="timeline-item fade-in">
-                    <div class="timeline-marker">ב</div>
-                    <div class="timeline-content">
-                        <span class="lessons">שיעורים 4-7</span>
-                        <h3>"אני והקבוצה" – סוד לאה ורחל</h3>
-                        <p>העמקת הקשר הקבוצתי והבנת היחס בין הפרט לכלל.</p>
+                
+                <div class="syllabus-item animate-on-scroll">
+                    <div class="syllabus-marker">ב</div>
+                    <div class="syllabus-content">
+                        <span class="syllabus-lessons">שיעורים 4-7</span>
+                        <h4>"אני והקבוצה" – סוד לאה ורחל</h4>
+                        <p>צלילה לעומק העבודה החברתית. גילוי כיצד הדינמיקה הקבוצתית משקפת את הסוד המקראי של לאה ורחל – איחוד הכוח הכללי עם הפרטי.</p>
                     </div>
                 </div>
-                <div class="timeline-item fade-in">
-                    <div class="timeline-marker">ג</div>
-                    <div class="timeline-content">
-                        <span class="lessons">שיעורים 8-12</span>
-                        <h3>"צמצום ותפיסת המציאות" – הנקודה האמצעית</h3>
-                        <p>הבנת מנגנון התפיסה שלנו ואיך לשנות את הפרשנות למציאות.</p>
+                
+                <div class="syllabus-item animate-on-scroll">
+                    <div class="syllabus-marker">ג</div>
+                    <div class="syllabus-content">
+                        <span class="syllabus-lessons">שיעורים 8-12</span>
+                        <h4>"צמצום ותפיסת המציאות" – הנקודה האמצעית</h4>
+                        <p>הבנת המבנה הרוחני של המציאות. מושגי יסוד כמו "העולם כנשמה", הצמצום, והנקודה האמצעית שסביבה מתגלה כל המציאות.</p>
                     </div>
                 </div>
-                <div class="timeline-item fade-in">
-                    <div class="timeline-marker">ד</div>
-                    <div class="timeline-content">
-                        <span class="lessons">שיעורים 13-16</span>
-                        <h3>"הוא ושמו אחד" – גילוי האחדות הנצחית</h3>
-                        <p>חיבור לשורש, הבנת האחדות שמאחורי הריבוי.</p>
+                
+                <div class="syllabus-item animate-on-scroll">
+                    <div class="syllabus-marker">ד</div>
+                    <div class="syllabus-content">
+                        <span class="syllabus-lessons">שיעורים 13-16</span>
+                        <h4>"הוא ושמו אחד" – גילוי האחדות הנצחית</h4>
+                        <p>העמקה במצב המתוקן והשלם. עולם אינסוף, התקשטות, והבנה עמוקה שאין באמת נפרדות – אלא הסתרה של האחדות.</p>
                     </div>
                 </div>
-                <div class="timeline-item fade-in">
-                    <div class="timeline-marker">ה</div>
-                    <div class="timeline-content">
-                        <span class="lessons">שיעורים 17-18</span>
-                        <h3>"מלימוד למעשה" – בניין המלכות וסיכום</h3>
-                        <p>יישום הנלמד בחיי היומיום, בניית תוכנית אישית להמשך.</p>
+                
+                <div class="syllabus-item animate-on-scroll">
+                    <div class="syllabus-marker">ה</div>
+                    <div class="syllabus-content">
+                        <span class="syllabus-lessons">שיעורים 17-18</span>
+                        <h4>"מלימוד למעשה" – בניין המלכות</h4>
+                        <p>אינטגרציה וסיכום. תרגום כל הכלים וההבנות ליישום מעשי בחיים – במשפחה, בקהילה, ובעולם. רכישת מנהיגות פנימית.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Audience Section -->
-    <section class="audience">
+    <!-- TARGET AUDIENCE SECTION -->
+    <section class="audience" id="audience">
         <div class="container">
-            <div class="section-header fade-in">
+            <div class="section-header">
                 <h2>למי הסדנה מתאימה?</h2>
+                <p>הסדנה מיועדת לנשים בגילאי 35-65 שמוכנות למסע אמיתי</p>
             </div>
+            
             <div class="audience-grid">
-                <div class="audience-card for-you fade-in">
-                    <h3>✓ מתאים לך אם:</h3>
-                    <ul>
-                        <li>כבר למדת פנימיות התורה במקומות אחרים ומרגישה שחסר</li>
-                        <li>רוצה לחוות את מה שאת לומדת, לא רק להבין</li>
-                        <li>מחפשת חברות נשמה אמיתיות</li>
-                        <li>מוכנה להשקיע בעבודה קבוצתית אינטנסיבית</li>
-                        <li>מבינה שהשינוי מתחיל מבפנים</li>
-                        <li>מחפשת סדר, היגיון וחזון רוחני</li>
+                <div class="audience-card for-you animate-on-scroll">
+                    <h3>הסדנה מתאימה לך אם...</h3>
+                    <ul class="audience-list">
+                        <li>כבר למדת פנימיות התורה במקומות אחרים ומרגישה שחסר לך משהו</li>
+                        <li>את רוצה לחוות את מה שאת לומדת – לא רק לדעת</li>
+                        <li>את מחפשת חברות נשמה אמיתיות ולא קשרים שטחיים</li>
+                        <li>את מוכנה להשקיע בעבודה קבוצתית אינטנסיבית ומחויבת</li>
+                        <li>את מבינה שהשינוי מתחיל מבפנים ודורש תיקון ביחס לזולת</li>
+                        <li>את מחפשת סדר, היגיון וחזון רוחני להתמודדות עם המציאות</li>
                     </ul>
                 </div>
-                <div class="audience-card not-for-you fade-in">
-                    <h3>✕ לא מתאים לך אם:</h3>
-                    <ul>
-                        <li>מחפשת לימוד אקדמי-אינטלקטואלי בלבד</li>
-                        <li>מעדיפה "שעשוע של פרשת שבוע" ללא מחויבות</li>
-                        <li>לא מוכנה להשקיע בבניית קשר חברתי</li>
-                        <li>מחפשת תשובות מהירות ללא עבודה פנימית</li>
+                
+                <div class="audience-card not-for-you animate-on-scroll">
+                    <h3>הסדנה אינה מתאימה לך אם...</h3>
+                    <ul class="audience-list">
+                        <li>את מחפשת לימוד אקדמי-אינטלקטואלי בלבד</li>
+                        <li>את מעדיפה "שעשוע של פרשת שבוע" ללא מחויבות לשינוי</li>
+                        <li>את לא מוכנה להשקיע בבניית קשר חברתי כדרישה רוחנית</li>
+                        <li>את מחפשת תשובות מהירות ללא עבודה פנימית</li>
                     </ul>
+                    
+                    <p style="margin-top: 20px; font-size: 0.95rem;">
+                        <strong>לנשים רווקות:</strong> קיימת סדנה מקבילה לנשים שאינן נשואות. ציני זאת בהרשמה ונתאם אותך לקבוצה המתאימה.
+                    </p>
                 </div>
-            </div>
-            <div class="audience-note fade-in">
-                <strong>הערה:</strong> לנשים רווקות יש סדנה מקבילה המותאמת במיוחד עבורן
             </div>
         </div>
     </section>
 
-    <!-- Testimonials Section -->
+    <!-- TESTIMONIALS SECTION -->
     <section class="testimonials" id="testimonials">
         <div class="container">
-            <div class="section-header fade-in">
+            <div class="section-header">
                 <h2>מה אומרות המשתתפות</h2>
+                <p>עדויות מנשים שעברו את המסע</p>
             </div>
-            <div class="testimonial-cards">
-                <div class="testimonial-card fade-in">
-                    <p class="testimonial-text">"הגעתי למרכז תוך כדי התפתחות רוחנית ולימוד מעמיק בפנימיות התורה ורציתי להבין יותר, להעמיק יותר, לקבל תשובות לשאלות מהותיות וקיומיות שלא תמיד אפשר לפתור מתוך לימוד בספרים ללא ליווי נכון ואחראי... הרב שמואל וחברי המרכז נותנים את התחושה שאת לא לבד בהתלבטות."</p>
-                    <div class="testimonial-author">
-                        <div class="testimonial-avatar">א</div>
-                        <div>
-                            <h4>אילה יעקב</h4>
-                            <span>קצרין</span>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card animate-on-scroll">
+                    <span class="testimonial-quote">"</span>
+                    <div class="testimonial-content">
+                        <p class="testimonial-text">
+                            "הגעתי למרכז תוך כדי התפתחות רוחנית ולימוד מעמיק בפנימיות התורה ורציתי להבין יותר, להעמיק יותר, לקבל תשובות לשאלות מהותיות וקיומיות שלא תמיד אפשר לפתור מתוך לימוד בספרים ללא ליווי נכון ואחראי... הרב שמואל וחברי המרכז נותנים את התחושה שאת לא לבד בהתלבטות."
+                        </p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar">א</div>
+                            <div class="testimonial-info">
+                                <h5>אילה יעקב</h5>
+                                <span>קצרין</span>
+                                <div class="testimonial-stars">★★★★★</div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="testimonial-card fade-in">
-                    <p class="testimonial-text">"התרומה המטורפת שלכם בעבורי היא מחיית הרושם הכבד המייסר... קיבלתי בחזרה את האחריות. העולם לא הפקר ואנו לא רובוטים... קיבלתי את האבדה שלי בחזרה! קשר טבעי של אהבה עם הבורא יתברך."</p>
-                    <div class="testimonial-author">
-                        <div class="testimonial-avatar">א</div>
-                        <div>
-                            <h4>אלישבע</h4>
-                            <span>משתתפת בסדנה</span>
+                
+                <div class="testimonial-card animate-on-scroll">
+                    <span class="testimonial-quote">"</span>
+                    <div class="testimonial-content">
+                        <p class="testimonial-text">
+                            "התרומה המטורפת שלכם בעבורי היא מחיית הרושם הכבד המייסר... קיבלתי בחזרה את האחריות. העולם לא הפקר ואנו לא רובוטים... קיבלתי את האבדה שלי בחזרה! קשר טבעי של אהבה עם הבורא יתברך."
+                        </p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar">א</div>
+                            <div class="testimonial-info">
+                                <h5>אלישבע</h5>
+                                <span>משתתפת בסדנה</span>
+                                <div class="testimonial-stars">★★★★★</div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="testimonial-card fade-in">
-                    <p class="testimonial-text">"השיעורים תרמו והבהירו לי נקודות מאוד חשובות שנוגעות להתפתחות האישית רוחנית דרך הזוגיות... הבנה של כל אחד מהצדדים את מהותו ואת תפקידו לצורך השלמות. ברוך השם שהגעתי למעגל הזה."</p>
-                    <div class="testimonial-author">
-                        <div class="testimonial-avatar">ח</div>
-                        <div>
-                            <h4>חני שפר</h4>
-                            <span>משתתפת בסדנה</span>
+                
+                <div class="testimonial-card animate-on-scroll">
+                    <span class="testimonial-quote">"</span>
+                    <div class="testimonial-content">
+                        <p class="testimonial-text">
+                            "השיעורים תרמו והבהירו לי נקודות מאוד חשובות שנוגעות להתפתחות האישית רוחנית דרך הזוגיות... הבנה של כל אחד מהצדדים את מהותו ואת תפקידו לצורך השלמות. ברוך השם שהגעתי למעגל הזה."
+                        </p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar">ח</div>
+                            <div class="testimonial-info">
+                                <h5>חני שפר</h5>
+                                <span>משתתפת בסדנה</span>
+                                <div class="testimonial-stars">★★★★★</div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1415,223 +1631,291 @@
         </div>
     </section>
 
-    <!-- Team Section -->
+    <!-- TEAM SECTION -->
     <section class="team" id="team">
         <div class="container">
-            <div class="team-content">
-                <div class="team-image fade-in">
-                    <img src="images/rabbi.jpg" alt="הרב שמואל גיברץ" onerror="this.parentElement.style.display='none'">
+            <div class="team-wrapper">
+                <div class="team-image">
+                    <div class="team-photo">
+                        <!-- Replace with your rabbi photo path when deploying -->
+                        <img src="images/rabbi.jpg" alt="הרב שמואל גיברץ" onerror="this.parentElement.innerHTML='👤'">
+                    </div>
                 </div>
-                <div class="team-text fade-in">
+                
+                <div class="team-content">
                     <h2>הרב שמואל גיברץ</h2>
-                    <p>הרב שמואל גיברץ מוביל את מרכז נשמה מתוך תחושת שליחות עמוקה. כתלמיד בשיטת בעל הסולם והרב"ש, הוא מתווך את המושגים המופשטים לכדי חוויה חברתית חיה.</p>
-                    <p>הרקע ההנדסי שלו מאפשר לו להסביר מושגים מורכבים בצורה מדויקת ומעשית, תוך שמירה על העומק הרוחני.</p>
-                    <div class="team-tags">
-                        <span class="team-tag">שיטת בעל הסולם</span>
-                        <span class="team-tag">תלמיד הרב"ש</span>
-                        <span class="team-tag">מרכז נשמה</span>
-                        <span class="team-tag">ליווי אישי</span>
+                    <p>
+                        הרב שמואל גיברץ מוביל את מרכז נשמה מתוך תחושת שליחות עמוקה. כתלמיד בשיטת בעל הסולם והרב"ש, הוא מתווך את המושגים המופשטים לכדי חוויה חברתית חיה.
+                    </p>
+                    <p>
+                        "אני חי את החברים שלי" – זו לא סיסמה, אלא תיאור של דרך חיים. הרב גיברץ מנגיש את חוכמת הקבלה באופן שמחבר בין השורשים הרוחניים לחיי היומיום, תוך דגש על תיקון היחס לזולת כמפתח לתיקון העצמי.
+                    </p>
+                    
+                    <div class="team-credentials">
+                        <span class="credential">שיטת בעל הסולם</span>
+                        <span class="credential">תלמיד הרב"ש</span>
+                        <span class="credential">מרכז נשמה</span>
+                        <span class="credential">ליווי אישי</span>
                     </div>
-                    <div class="team-note">
-                        <strong>לצד הרב גיברץ</strong> פועלים ר' אלרון קוריאט ור' עדי אבינון כ"חברי נפש" – מלווים את המשתתפות לאורך כל הדרך.
-                    </div>
+                    
+                    <p style="margin-top: 24px; font-size: 0.95rem;">
+                        <strong>צוות ההנחיה:</strong> לצד הרב גיברץ פועלים ר' אלרון קוריאט ור' עדי אבינון כ"חברי נפש" – מחברים בין המידע העיוני לצד הפרקטי ומוודאים שהידע הופך לחוויה חיה בתוך הדינמיקה הקבוצתית.
+                    </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Logistics Section -->
-    <section class="logistics">
+    <!-- LOGISTICS SECTION -->
+    <section class="logistics" id="logistics">
         <div class="container">
-            <div class="section-header fade-in">
+            <div class="section-header">
                 <h2>פרטים מעשיים</h2>
+                <p>כל מה שצריך לדעת לפני ההרשמה</p>
             </div>
+            
             <div class="logistics-grid">
-                <div class="logistics-item fade-in">
+                <div class="logistics-item animate-on-scroll">
                     <div class="logistics-icon">📚</div>
                     <h4>18 מפגשים</h4>
-                    <p>מסע מובנה ב-5 שלבים</p>
+                    <p>מסע מובנה ב-5 שלבים, כולל שיחות אישיות וליווי צמוד</p>
                 </div>
-                <div class="logistics-item fade-in">
+                
+                <div class="logistics-item animate-on-scroll">
                     <div class="logistics-icon">💻</div>
                     <h4>מפגשים בזום</h4>
-                    <p>גמישות מקסימלית</p>
+                    <p>גמישות מקסימלית – מכל מקום בארץ ובעולם</p>
                 </div>
-                <div class="logistics-item fade-in">
+                
+                <div class="logistics-item animate-on-scroll">
                     <div class="logistics-icon">👥</div>
                     <h4>קבוצה אינטימית</h4>
-                    <p>מינימום 5, אופטימום 10</p>
+                    <p>מינימום 5 משתתפות, אופטימום 10 – לעבודה עמוקה ואישית</p>
                 </div>
-                <div class="logistics-item fade-in">
+                
+                <div class="logistics-item animate-on-scroll">
                     <div class="logistics-icon">📅</div>
                     <h4>מועדים גמישים</h4>
-                    <p>בתיאום עם המשתתפות</p>
+                    <p>מועדי השיעורים ייקבעו בתיאום עם המשתתפות והרב</p>
                 </div>
-                <div class="logistics-item fade-in">
+                
+                <div class="logistics-item animate-on-scroll">
                     <div class="logistics-icon">💝</div>
                     <h4>770 ₪ תרומה</h4>
-                    <p>גמישות במידת הצורך</p>
+                    <p>תרומה לתמיכה בפעילות המרכז – גמישות במידת הצורך</p>
                 </div>
-                <div class="logistics-item fade-in">
+                
+                <div class="logistics-item animate-on-scroll">
                     <div class="logistics-icon">💬</div>
                     <h4>קהילה תומכת</h4>
-                    <p>קבוצות וואטסאפ</p>
+                    <p>קבוצות וואטסאפ לימודיות וחברתיות לאורך כל הדרך</p>
                 </div>
             </div>
-            <div class="logistics-note fade-in">
-                <strong>לגבי התרומה:</strong> אין התנייה בתשלום. סכום התרומה נועד לתמוך בפעילות מרכז נשמה. התרומה גם עוזרת ליצור מחויבות וכלי קבלה מתאים לתהליך. יש גמישות מלאה במידת הצורך.
+            
+            <div class="logistics-note">
+                <p>
+                    <strong>הערה על התרומה:</strong> אין התנייה בתשלום. סכום התרומה נועד לתמוך בפעילות מרכז נשמה ולאפשר את קיום הסדנה. במקביל, התרומה גם עוזרת ליצור מחויבות וכלי קבלה מתאים לתהליך. יש גמישות מלאה במידת הצורך – דברי איתנו.
+                </p>
             </div>
         </div>
     </section>
 
-    <!-- Registration Form -->
+    <!-- REGISTRATION SECTION -->
     <section class="registration" id="registration">
         <div class="container">
-            <div class="section-header fade-in">
+            <div class="section-header">
                 <h2>הרשמה לסדנה</h2>
-                <p>מלאי את הפרטים ונחזור אליך בהקדם</p>
+                <p>מלאי את הפרטים ונחזור אלייך בהקדם</p>
             </div>
-            <div class="form-container fade-in">
-                <form id="registrationForm" action="mailto:hoshenyehuda@gmail.com" method="post" enctype="text/plain">
+            
+            <div class="registration-wrapper">
+                <form class="registration-form" id="registrationForm">
                     <div class="form-row">
                         <div class="form-group">
-                            <label>שם פרטי <span>*</span></label>
-                            <input type="text" name="firstName" required>
+                            <label for="firstName">שם פרטי *</label>
+                            <input type="text" id="firstName" name="firstName" required>
                         </div>
                         <div class="form-group">
-                            <label>שם משפחה <span>*</span></label>
-                            <input type="text" name="lastName" required>
+                            <label for="lastName">שם משפחה *</label>
+                            <input type="text" id="lastName" name="lastName" required>
                         </div>
                     </div>
+                    
                     <div class="form-row">
                         <div class="form-group">
-                            <label>טלפון <span>*</span></label>
-                            <input type="tel" name="phone" required>
+                            <label for="phone">טלפון *</label>
+                            <input type="tel" id="phone" name="phone" required placeholder="050-0000000">
                         </div>
                         <div class="form-group">
-                            <label>דוא"ל <span>*</span></label>
-                            <input type="email" name="email" required>
+                            <label for="email">דוא"ל *</label>
+                            <input type="email" id="email" name="email" required>
                         </div>
                     </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label>עיר מגורים</label>
-                            <input type="text" name="city">
-                        </div>
-                        <div class="form-group">
-                            <label>מצב משפחתי</label>
-                            <select name="maritalStatus">
-                                <option value="">בחרי...</option>
-                                <option value="married">נשואה</option>
-                                <option value="single">רווקה</option>
-                                <option value="divorced">גרושה</option>
-                                <option value="widow">אלמנה</option>
-                            </select>
-                        </div>
-                    </div>
+                    
                     <div class="form-group">
-                        <label>רקע בלימוד פנימיות התורה</label>
-                        <textarea name="background" placeholder="ספרי לנו קצת על הרקע שלך בלימוד קבלה ופנימיות התורה..."></textarea>
+                        <label for="city">עיר מגורים</label>
+                        <input type="text" id="city" name="city">
                     </div>
+                    
                     <div class="form-group">
-                        <label>הערות נוספות</label>
-                        <textarea name="notes" placeholder="יש משהו נוסף שתרצי לשתף?"></textarea>
+                        <label for="status">מצב משפחתי</label>
+                        <select id="status" name="status">
+                            <option value="">בחרי...</option>
+                            <option value="married">נשואה</option>
+                            <option value="single">רווקה / לא בזוגיות</option>
+                            <option value="divorced">גרושה</option>
+                            <option value="widowed">אלמנה</option>
+                        </select>
                     </div>
+                    
                     <div class="form-group">
-                        <div class="checkbox-group">
-                            <input type="checkbox" id="consent" name="consent" required>
-                            <label for="consent">אני מאשרת קבלת מידע ועדכונים ממרכז נשמה</label>
-                        </div>
+                        <label for="background">ספרי בקצרה על הרקע שלך בלימוד פנימיות התורה</label>
+                        <textarea id="background" name="background" placeholder="איפה למדת? מה את מחפשת בסדנה?"></textarea>
                     </div>
+                    
+                    <div class="form-group">
+                        <label for="message">הערות נוספות</label>
+                        <textarea id="message" name="message" placeholder="משהו שחשוב לך שנדע..."></textarea>
+                    </div>
+                    
+                    <div class="form-group form-checkbox">
+                        <input type="checkbox" id="consent" name="consent" required>
+                        <label for="consent">אני מאשרת קבלת עדכונים מ"מרכז נשמה" ומסכימה לתנאי השימוש</label>
+                    </div>
+                    
                     <div class="form-submit">
-                        <button type="submit" class="btn btn-primary">שלחי הרשמה</button>
+                        <button type="submit" class="btn btn-primary">שלחי הרשמה →</button>
                     </div>
                 </form>
             </div>
         </div>
     </section>
 
-    <!-- FAQ Section -->
+    <!-- FAQ SECTION -->
     <section class="faq" id="faq">
         <div class="container">
-            <div class="section-header fade-in">
+            <div class="section-header">
                 <h2>שאלות נפוצות</h2>
             </div>
+            
             <div class="faq-list">
-                <div class="faq-item fade-in">
-                    <button class="faq-question">האם צריך להיות דתייה כדי להשתתף?</button>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>האם צריך להיות דתייה כדי להשתתף?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
                     <div class="faq-answer">
-                        <p>לא. הסדנה פתוחה לכל אישה המעוניינת להעמיק בפנימיות התורה, ללא קשר לרמת הדתיות שלה. אנחנו מתמקדים בחוויה הפנימית ולא בקפידה על צורה חיצונית.</p>
+                        <div class="faq-answer-content">
+                            לא. הסדנה פתוחה לכל אישה המחפשת העמקה רוחנית, ללא קשר לרקע דתי. עם זאת, חשוב לדעת שהמנחים דתיים, חומרי הלימוד מבוססים על כתבי קודש (בעיקר חסידות חב"ד וקבלת בעל הסולם), והכיוון הוא מסורתי-דתי. הדגש הוא על העבודה הפנימית והחיבור לרוחניות – לא על צורות חיצוניות.
+                        </div>
                     </div>
                 </div>
-                <div class="faq-item fade-in">
-                    <button class="faq-question">מה ההבדל בין הסדנה הזו לקורסי קבלה אחרים?</button>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>מה ההבדל בין הסדנה הזו לקורסי קבלה אחרים?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
                     <div class="faq-answer">
-                        <p>ההבדל המרכזי הוא בדגש על החוויה הקבוצתית. אנחנו לא רק לומדים על קבלה – אנחנו מתרגלים אותה דרך עבודה בקבוצה. בנוסף, אנחנו עובדים לפי שיטת בעל הסולם והרב"ש, שמתמקדת בעבודה מעשית ולא רק בלימוד עיוני.</p>
+                        <div class="faq-answer-content">
+                            ההבדל המרכזי הוא הדגש על החוויה והעבודה הקבוצתית. אנחנו לא מלמדות קבלה כידע אינטלקטואלי, אלא כתהליך טרנספורמטיבי שבו הקבוצה היא הכלי המרכזי. השיטה מבוססת על מורשת בעל הסולם והרב"ש, עם דגש על "שיטת ענף ושורש" – חיבור מתמיד בין המושגים הרוחניים לחוויות היומיומיות שלך.
+                        </div>
                     </div>
                 </div>
-                <div class="faq-item fade-in">
-                    <button class="faq-question">כמה זמן לוקח כל מפגש?</button>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>כמה זמן לוקח כל מפגש?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
                     <div class="faq-answer">
-                        <p>כל מפגש נמשך כשעה וחצי עד שעתיים. המפגשים מתקיימים בזום, מה שמאפשר גמישות מקסימלית.</p>
+                        <div class="faq-answer-content">
+                            כל מפגש אורך כשעה וחצי עד שעתיים. בנוסף, יש שיחות אישיות של כ-20 דקות עם המנחה, ועבודה בקבוצות קטנות במהלך השבוע. זמני המפגשים ייקבעו בתיאום עם המשתתפות.
+                        </div>
                     </div>
                 </div>
-                <div class="faq-item fade-in">
-                    <button class="faq-question">מה אם אני לא יכולה לשלם את מלוא הסכום?</button>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>מה אם אני לא יכולה לשלם את מלוא הסכום?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
                     <div class="faq-answer">
-                        <p>יש גמישות מלאה בנושא התרומה. אף אחת לא תישאר בחוץ בגלל מצב כלכלי. פני אלינו ונמצא פתרון מתאים.</p>
+                        <div class="faq-answer-content">
+                            אנחנו מאמינים שכסף לא צריך להיות מחסום לצמיחה רוחנית. סכום התרומה (770 ₪) נועד לתמוך בפעילות המרכז, אך יש גמישות מלאה. פני אלינו ונמצא פתרון מתאים. הדבר החשוב הוא הנכונות והמחויבות לתהליך.
+                        </div>
                     </div>
                 </div>
-                <div class="faq-item fade-in">
-                    <button class="faq-question">האם הסדנה מתאימה לנשים רווקות?</button>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>האם הסדנה מתאימה לנשים רווקות?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
                     <div class="faq-answer">
-                        <p>לנשים רווקות יש סדנה מקבילה המותאמת במיוחד עבורן, שמתייחסת לאתגרים הייחודיים של שלב החיים הזה. צרי קשר לפרטים.</p>
+                        <div class="faq-answer-content">
+                            הסדנה הנוכחית מיועדת בעיקר לנשים נשואות, אך קיימת סדנה מקבילה לנשים שאינן בזוגיות. אם את רווקה או לא בזוגיות – ציני זאת בטופס ההרשמה ונדאג לתאם אותך לקבוצה המתאימה.
+                        </div>
                     </div>
                 </div>
-                <div class="faq-item fade-in">
-                    <button class="faq-question">מתי מתחילה הסדנה הבאה?</button>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>מתי מתחילה הסדנה הבאה?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
                     <div class="faq-answer">
-                        <p>מועדי הסדנה נקבעים בתיאום עם המשתתפות. מלאי את טופס ההרשמה ונעדכן אותך ברגע שנפתחת קבוצה חדשה.</p>
+                        <div class="faq-answer-content">
+                            הסדנה נפתחת כשמתגבשת קבוצה של לפחות 5 משתתפות (אופטימום 10). הירשמי עכשיו ונעדכן אותך ברגע שתיפתח קבוצה חדשה. מועדי השיעורים עצמם ייקבעו בתיאום עם המשתתפות והרב.
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
+    <!-- CTA SECTION -->
     <section class="cta">
-        <div class="container fade-in">
+        <div class="container">
             <h2>מוכנה להתחיל את המסע?</h2>
-            <p>הצטרפי לנשים שכבר גילו שהשינוי מתחיל מבפנים. מקומות מוגבלים – הירשמי עכשיו.</p>
-            <a href="#registration" class="btn btn-primary">להרשמה לסדנה</a>
+            <p>
+                הצטרפי לנשים שכבר גילו שהשינוי מתחיל מבפנים. 
+                מקומות מוגבלים – הירשמי עכשיו.
+            </p>
+            <a href="#registration" class="btn btn-accent">להרשמה →</a>
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- FOOTER -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-brand">
-                    <img src="images/logo.png" alt="מרכז נשמה" onerror="this.style.display='none'">
-                    <p>מרכז נשמה - הכוונה רוחנית בחכמת הקבלה</p>
+                <div class="footer-about">
+                    <img src="images/logo.png" alt="מרכז נשמה" class="footer-logo" onerror="this.style.display='none'">
+                    <h4 style="margin-bottom: 12px;">מרכז נשמה</h4>
+                    <p>הכוונה רוחנית בחכמת הקבלה</p>
+                    <p>מעבדה רוחנית ליצירת "האדם החדש" – מסע מ"אני פרטי" אל "אני כללי" בשיטת בעל הסולם והרב"ש.</p>
                 </div>
-                <div class="footer-links">
+                
+                <div class="footer-nav">
                     <h4>ניווט מהיר</h4>
-                    <ul>
-                        <li><a href="#about">על הסדנה</a></li>
-                        <li><a href="#syllabus">תוכנית</a></li>
+                    <ul class="footer-links">
+                        <li><a href="#journey">על הסדנה</a></li>
+                        <li><a href="#syllabus">תוכנית הסדנה</a></li>
                         <li><a href="#testimonials">המלצות</a></li>
                         <li><a href="#faq">שאלות נפוצות</a></li>
                         <li><a href="#registration">הרשמה</a></li>
                     </ul>
                 </div>
+                
                 <div class="footer-contact">
-                    <h4>צרו קשר</h4>
+                    <h4>יצירת קשר</h4>
                     <p>📧 hoshenyehuda@gmail.com</p>
                     <p>📱 054-320-0050</p>
                     <p>👤 ר' אלרון קוריאט</p>
                 </div>
             </div>
+            
             <div class="footer-bottom">
                 <p>© 2025 מרכז נשמה. כל הזכויות שמורות.</p>
             </div>
@@ -1639,10 +1923,12 @@
     </footer>
 
     <!-- WhatsApp Float Button -->
-    <a href="https://wa.me/972543200050?text=שלום%2C%20אני%20מתעניינת%20בסדנת%20אשת%20חיל" class="whatsapp-float" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-        </svg>
+    <a href="https://wa.me/972543200050?text=שלום%2C%20אני%20מתעניינת%20בסדנת%20אשת%20חיל" 
+       class="whatsapp-float" 
+       target="_blank" 
+       rel="noopener"
+       aria-label="שלחי הודעה בוואטסאפ">
+        💬
     </a>
 
     <script>
@@ -1651,23 +1937,26 @@
             button.addEventListener('click', () => {
                 const item = button.parentElement;
                 const isActive = item.classList.contains('active');
-
+                
                 // Close all items
-                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
-
+                document.querySelectorAll('.faq-item').forEach(faq => {
+                    faq.classList.remove('active');
+                });
+                
                 // Open clicked item if it wasn't active
                 if (!isActive) {
                     item.classList.add('active');
                 }
             });
         });
-
-        // Scroll animations
+        
+        // Scroll Animation
         const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
         };
-
+        
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -1675,12 +1964,14 @@
                 }
             });
         }, observerOptions);
-
-        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
+        
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+        
         // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
+            anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
@@ -1691,68 +1982,92 @@
                 }
             });
         });
-
+        
         // Form submission
         document.getElementById('registrationForm').addEventListener('submit', async function(e) {
             e.preventDefault();
 
-            const submitBtn = this.querySelector('button[type="submit"]');
-            const originalText = submitBtn.textContent;
-            submitBtn.textContent = 'שולח...';
-            submitBtn.disabled = true;
-
             const formData = new FormData(this);
+            const rawData = Object.fromEntries(formData.entries());
 
-            // Prepare data for Directus
+            // Map form fields to Directus collection fields
             const data = {
-                first_name: formData.get('firstName'),
-                last_name: formData.get('lastName'),
-                phone: formData.get('phone'),
-                email: formData.get('email'),
-                city: formData.get('city'),
-                marital_status: formData.get('maritalStatus'),
-                background: formData.get('background'),
-                notes: formData.get('notes')
+                first_name: rawData.firstName,
+                last_name: rawData.lastName,
+                phone: rawData.phone,
+                email: rawData.email,
+                city: rawData.city || null,
+                marital_status: rawData.status || null,
+                background: rawData.background || null,
+                notes: rawData.message || null,
+                status: 'new'
             };
 
             try {
-                // Send to Directus
-                const response = await fetch('https://crm.coriathost.cloud/items/workshop_registrations', {
+                // Directus API endpoint for workshop registrations
+                const apiUrl = 'https://crm.coriathost.cloud/items/workshop_registrations';
+
+                const response = await fetch(apiUrl, {
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
                     },
                     body: JSON.stringify(data)
                 });
 
                 if (response.ok) {
-                    // Success - show thank you message
-                    alert('תודה על ההרשמה! נחזור אליך בהקדם.');
+                    alert('תודה! קיבלנו את הרשמתך ונחזור אלייך בהקדם.');
                     this.reset();
                 } else {
-                    throw new Error('Server error');
+                    throw new Error('שגיאה בשליחה');
                 }
             } catch (error) {
-                console.error('Error submitting form:', error);
+                // Fallback: open email client
+                const subject = encodeURIComponent('הרשמה לסדנת אשת חיל');
+                const body = encodeURIComponent(`
+שם: ${rawData.firstName} ${rawData.lastName}
+טלפון: ${rawData.phone}
+דוא"ל: ${rawData.email}
+עיר: ${rawData.city || 'לא צוין'}
+מצב משפחתי: ${rawData.status || 'לא צוין'}
 
-                // Fallback: Send via WhatsApp
-                let message = 'הרשמה חדשה לסדנת אשת חיל:\n\n';
-                const labels = {
-                    first_name: 'שם פרטי', last_name: 'שם משפחה', phone: 'טלפון',
-                    email: 'דוא"ל', city: 'עיר', marital_status: 'מצב משפחתי',
-                    background: 'רקע בלימוד', notes: 'הערות'
-                };
-                Object.entries(data).forEach(([key, value]) => {
-                    if (value) message += `${labels[key] || key}: ${value}\n`;
-                });
+רקע בלימוד:
+${rawData.background || 'לא צוין'}
 
-                const whatsappUrl = `https://wa.me/972543200050?text=${encodeURIComponent(message)}`;
-                window.open(whatsappUrl, '_blank');
-                alert('תודה! ההרשמה נשלחה בוואטסאפ.');
-                this.reset();
-            } finally {
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
+הערות:
+${rawData.message || 'אין'}
+                `);
+
+                window.location.href = `mailto:hoshenyehuda@gmail.com?subject=${subject}&body=${body}`;
+                alert('אם החלון לא נפתח, שלחי מייל ל: hoshenyehuda@gmail.com');
+            }
+        });
+                
+                if (response.ok) {
+                    alert('תודה! קיבלנו את הרשמתך ונחזור אלייך בהקדם.');
+                    this.reset();
+                } else {
+                    throw new Error('שגיאה בשליחה');
+                }
+            } catch (error) {
+                // Fallback: open email client
+                const subject = encodeURIComponent('הרשמה לסדנת אשת חיל');
+                const body = encodeURIComponent(`
+שם: ${data.firstName} ${data.lastName}
+טלפון: ${data.phone}
+דוא"ל: ${data.email}
+עיר: ${data.city || 'לא צוין'}
+מצב משפחתי: ${data.status || 'לא צוין'}
+
+רקע בלימוד:
+${data.background || 'לא צוין'}
+
+הערות:
+${data.message || 'אין'}
+                `);
+                
+                window.location.href = `mailto:hoshenyehuda@gmail.com?subject=${subject}&body=${body}`;
+                alert('אם החלון לא נפתח, שלחי מייל ל: hoshenyehuda@gmail.com');
             }
         });
     </script>
