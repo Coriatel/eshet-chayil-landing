@@ -1868,10 +1868,19 @@
                         <input type="checkbox" id="consent" name="consent" required>
                         <label for="consent">אני מאשרת קבלת עדכונים מ"מרכז נשמה" ומסכימה לתנאי השימוש</label>
                     </div>
-                    
-                    <div class="form-submit">
-                        <button type="submit" class="btn btn-primary">שלחי הרשמה →</button>
+
+                    <!-- Honeypot field — hidden from humans, bots fill it -->
+                    <div style="position:absolute;left:-9999px;opacity:0;height:0;overflow:hidden;" aria-hidden="true">
+                        <label for="website">אל תמלאי שדה זה</label>
+                        <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
                     </div>
+
+                    <div class="form-submit">
+                        <button type="submit" class="btn btn-primary" id="submitBtn">שלחי הרשמה →</button>
+                    </div>
+
+                    <!-- Success/error messages -->
+                    <div id="formMessage" style="display:none; text-align:center; padding: 16px; margin-top: 16px; border-radius: 8px;"></div>
                 </form>
             </div>
         </div>
@@ -2089,14 +2098,24 @@
             });
         });
         
-        // Form submission
+        // Form submission — secure server-side proxy
         document.getElementById('registrationForm').addEventListener('submit', async function(e) {
             e.preventDefault();
 
-            const formData = new FormData(this);
+            const form = this;
+            const btn = document.getElementById('submitBtn');
+            const msg = document.getElementById('formMessage');
+
+            // Prevent double submit
+            if (btn.disabled) return;
+            btn.disabled = true;
+            btn.textContent = 'שולח...';
+            msg.style.display = 'none';
+
+            const formData = new FormData(form);
             const rawData = Object.fromEntries(formData.entries());
 
-            // Map form fields to Directus collection fields
+            // Map form fields to API payload
             const data = {
                 first_name: rawData.firstName,
                 last_name: rawData.lastName,
@@ -2105,47 +2124,44 @@
                 city: rawData.city || null,
                 marital_status: rawData.status || null,
                 background: rawData.background || null,
-                notes: rawData.message || null,
-
+                message: rawData.message || null,
+                consent: !!rawData.consent,
+                website: rawData.website || ''  // honeypot
             };
 
             try {
-                // Directus API endpoint for workshop registrations
-                const apiUrl = 'https://crm.coriathost.cloud/items/workshop_registrations';
-
-                const response = await fetch(apiUrl, {
+                const response = await fetch('/api/lead', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(data)
                 });
 
-                if (response.ok) {
-                    alert('תודה! קיבלנו את הרשמתך ונחזור אלייך בהקדם.');
-                    this.reset();
+                const result = await response.json().catch(() => ({}));
+
+                if (response.ok && result.ok) {
+                    // Success
+                    msg.style.display = 'block';
+                    msg.style.background = '#e8f5e9';
+                    msg.style.color = '#1b5e20';
+                    msg.innerHTML = '<strong>תודה!</strong> קיבלנו את הפרטים ונחזור אלייך בהקדם.';
+                    form.reset();
+                } else if (response.status === 429) {
+                    msg.style.display = 'block';
+                    msg.style.background = '#fff3e0';
+                    msg.style.color = '#e65100';
+                    msg.textContent = 'נשלחו יותר מדי בקשות. נסי שוב בעוד דקה.';
                 } else {
-                    throw new Error('שגיאה בשליחה');
+                    throw new Error(result.error || 'שגיאה');
                 }
             } catch (error) {
-                // Fallback: open email client
-                const subject = encodeURIComponent('הרשמה לסדנת אשת חיל');
-                const body = encodeURIComponent(`
-שם: ${rawData.firstName} ${rawData.lastName}
-טלפון: ${rawData.phone}
-דוא"ל: ${rawData.email}
-עיר: ${rawData.city || 'לא צוין'}
-מצב משפחתי: ${rawData.status || 'לא צוין'}
-
-רקע בלימוד:
-${rawData.background || 'לא צוין'}
-
-הערות:
-${rawData.message || 'אין'}
-                `);
-
-                window.location.href = `mailto:hoshenyehuda@gmail.com?subject=${subject}&body=${body}`;
-                alert('אם החלון לא נפתח, שלחי מייל ל: hoshenyehuda@gmail.com');
+                // Show error with email fallback
+                msg.style.display = 'block';
+                msg.style.background = '#ffebee';
+                msg.style.color = '#b71c1c';
+                msg.innerHTML = 'אירעה שגיאה בשליחה. ניתן לשלוח מייל ישירות ל: <a href="mailto:hoshenyehuda@gmail.com" style="color:#b71c1c;">hoshenyehuda@gmail.com</a>';
+            } finally {
+                btn.disabled = false;
+                btn.textContent = 'שלחי הרשמה →';
             }
         });
     </script>
