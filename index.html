@@ -1243,13 +1243,20 @@
             }
         }
         
+        /* Animation - elements visible by default, animate when JS ready */
         .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(30px);
+            opacity: 1;
+            transform: translateY(0);
             transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
-        .animate-on-scroll.visible {
+        /* Only hide elements when JS is ready */
+        .js-ready .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .js-ready .animate-on-scroll.visible {
             opacity: 1;
             transform: translateY(0);
         }
@@ -1950,24 +1957,44 @@
             });
         });
         
-        // Scroll Animation
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1
-        };
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
+        // Scroll Animation with fallback
+        try {
+            // Mark body as JS-ready
+            document.body.classList.add('js-ready');
+            
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px 0px -50px 0px',
+                threshold: 0.15
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target); // Stop observing once visible
+                    }
+                });
+            }, observerOptions);
+            
+            // Small delay to ensure CSS is applied
+            setTimeout(() => {
+                document.querySelectorAll('.animate-on-scroll').forEach(el => {
+                    // Check if already in viewport
+                    const rect = el.getBoundingClientRect();
+                    if (rect.top < window.innerHeight && rect.bottom > 0) {
+                        el.classList.add('visible');
+                    } else {
+                        observer.observe(el);
+                    }
+                });
+            }, 100);
+        } catch (e) {
+            // Fallback: show all elements if IntersectionObserver fails
+            document.querySelectorAll('.animate-on-scroll').forEach(el => {
+                el.classList.add('visible');
             });
-        }, observerOptions);
-        
-        document.querySelectorAll('.animate-on-scroll').forEach(el => {
-            observer.observe(el);
-        });
+        }
         
         // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
